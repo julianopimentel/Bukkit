@@ -1,5 +1,6 @@
-package LoginDB;
+package Connecting;
 
+import Connecting.StringsDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

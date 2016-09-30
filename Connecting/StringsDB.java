@@ -1,4 +1,4 @@
-package LoginDB;
+package Connecting;
 /**
  *
  * @author Juliano Pimentel

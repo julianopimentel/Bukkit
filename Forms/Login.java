@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Forms;
+import Classes.verificarLogin;
 import Connecting.conectarDB;
 import javax.swing.JOptionPane;
 
@@ -166,7 +167,7 @@ public class Login extends javax.swing.JFrame {
             String user = form_Usuario.getText();   // Resgata o usuario.
             char[] pass = form_Senha.getPassword(); // Resgata a senha.
             String pwd = String.copyValueOf(pass);  // Converter senha para string.
-            conectarDB r = new conectarDB();    //Conectar com o banco.
+            verificarLogin r = new verificarLogin();    //Conectar com o banco.
             
             if(r.validate_login(user, pwd)) {    //Valida o campo digitado com o banco.
                 this.dispose();

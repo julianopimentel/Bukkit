@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 public class conectarDB extends StringsDB {             
 
-        private Connection Conexao;  
+        public Connection Conexao;  
         public boolean result;
         
         //Metodo para conectar.
@@ -58,45 +58,6 @@ public class conectarDB extends StringsDB {
             }  
   
        }          
-        
-        //Metodo para validar login.
-        public boolean validate_login(String username,String password) {
-            try{           
-                conecta();    
-                PreparedStatement pst = Conexao.prepareStatement("Select * from login where username=? and password=?");
-                pst.setString(1, username); 
-                pst.setString(2, password);
-                ResultSet rs = pst.executeQuery();  
-                
-                if(rs.next())            
-                    return true;    
-                else
-                    return false;            
-                }
-            catch(Exception e){
-                e.printStackTrace();
-                return false;
-                } 
-        }  
-
-        //Metodo para validar login.
-        public boolean Cadastro (int cpf,String nome) {
-            
-            String sql = "INSERT INTO clientes(cpf,nome) VALUES(?,?)"; 
-            try{           
-                conecta();    
-                PreparedStatement pst = Conexao.prepareStatement(sql);
-                pst.setInt(1, cpf);  
-                pst.setString(2, nome);
-                
-                 pst.execute();  
-                pst.close();  
-                } 
-            catch (SQLException u) 
-            {  
-                throw new RuntimeException(u);  
-            } return true; 
-        }
 }
 
 

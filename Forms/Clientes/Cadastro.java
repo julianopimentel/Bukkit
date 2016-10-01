@@ -5,6 +5,7 @@
  */
 package Forms.Clientes;
 
+import Classes.insertCadastro;
 import Connecting.conectarDB;
 import Forms.Inicial;
 import javax.swing.JOptionPane;
@@ -257,7 +258,7 @@ public class Cadastro extends javax.swing.JFrame {
             int cpf = Integer.parseInt(cpfst);
             String nome = campoNome.getText();
 
-            conectarDB r = new conectarDB();    //Conectar com o banco.
+            insertCadastro r = new insertCadastro();    //Conectar com o banco.
             
             if(r.Cadastro(cpf, nome)) {    //Valida o campo digitado com o banco.
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");

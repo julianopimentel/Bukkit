@@ -1,5 +1,6 @@
 package Forms;
 
+import Forms.Clientes.Cadastro;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ public class Inicial extends javax.swing.JFrame {
      */
     public Inicial() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -29,7 +31,7 @@ public class Inicial extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuCadastro = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -58,6 +60,11 @@ public class Inicial extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Logoff");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Sair");
@@ -70,21 +77,26 @@ public class Inicial extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Clientes");
+        menuCadastro.setText("Clientes");
 
         jMenuItem4.setText("Cadastro");
-        jMenu2.add(jMenuItem4);
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(jMenuItem4);
 
         jMenuItem5.setText("Buscar");
-        jMenu2.add(jMenuItem5);
+        menuCadastro.add(jMenuItem5);
 
         jMenuItem6.setText("Editar");
-        jMenu2.add(jMenuItem6);
+        menuCadastro.add(jMenuItem6);
 
         jMenuItem7.setText("Excluir");
-        jMenu2.add(jMenuItem7);
+        menuCadastro.add(jMenuItem7);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuCadastro);
 
         jMenu3.setText("Televendas");
 
@@ -153,18 +165,30 @@ public class Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
-        // Abrir about
+        // Abrir about.
         new Inicial().setVisible(true);
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-            int resposta;
+        //Confirmar saida.    
+        int resposta;
             resposta = JOptionPane.showConfirmDialog(null, "Gostaria de sair?");
 
             if (resposta == JOptionPane.YES_OPTION) {
             System.exit(0);
             }
     }//GEN-LAST:event_jMenuItem3MouseClicked
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        //Cadastro de Clientes.
+        new Cadastro().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //Logouff.
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,7 +228,6 @@ public class Inicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -226,6 +249,7 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuSobre;
     // End of variables declaration//GEN-END:variables
 }

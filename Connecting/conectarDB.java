@@ -76,6 +76,28 @@ public class conectarDB extends StringsDB {
             catch(Exception e){
                 e.printStackTrace();
                 return false;
-            } 
+                } 
         }  
-    }
+
+        //Metodo para validar login.
+        public boolean Cadastro (int cpf,String nome) {
+            
+            String sql = "INSERT INTO clientes(cpf,nome) VALUES(?,?)"; 
+            try{           
+                conecta();    
+                PreparedStatement pst = Conexao.prepareStatement(sql);
+                pst.setInt(1, cpf);  
+                pst.setString(2, nome);
+                
+                 pst.execute();  
+                pst.close();  
+                } 
+            catch (SQLException u) 
+            {  
+                throw new RuntimeException(u);  
+            } return true; 
+        }
+}
+
+
+    

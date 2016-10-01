@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Forms.Clientes;
 
 import Classes.insertCadastro;
-import Connecting.conectarDB;
-import Forms.Inicial;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Juliano P
+ * @author Juliano Pimentel
  */
 public class Cadastro extends javax.swing.JFrame {
 
@@ -38,7 +31,6 @@ public class Cadastro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
-        campoCPF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         campoEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -51,13 +43,14 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         campoSobrenome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        campoNascimento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        campoTelefone = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         campoBairro = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         boxCivil = new javax.swing.JComboBox<>();
+        campoNascimento = new javax.swing.JFormattedTextField();
+        campoTelefone = new javax.swing.JFormattedTextField();
+        campoCPF = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         campoObs = new javax.swing.JTextPane();
         jLabel12 = new javax.swing.JLabel();
@@ -110,6 +103,24 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
+        try {
+            campoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            campoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            campoCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,8 +139,8 @@ public class Cadastro extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campoEmail)
                             .addComponent(campoNome)
-                            .addComponent(campoCPF)
-                            .addComponent(campoRua, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(campoRua, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(campoCPF))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -147,10 +158,11 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(campoSobrenome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                        .addComponent(campoTelefone)
-                        .addComponent(campoNascimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(campoBairro))
-                    .addComponent(boxCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boxCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(campoTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                        .addComponent(campoNascimento, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -165,9 +177,9 @@ public class Cadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(campoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -252,22 +264,29 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Cadastro cliente.
-        
-            String cpfst = campoCPF.getText();
-            int cpf = Integer.parseInt(cpfst);
+            
+            //Cadastro cliente.
+            String cpf = campoCPF.getText();
             String nome = campoNome.getText();
+            String sobrenome = campoSobrenome.getText();
+            String telefone = campoTelefone.getText();
+            String email = campoEmail.getText();
+            String rua = campoRua.getText();
+            String bairro = campoBairro.getText();
+            String numero = campoNumero.getText();
+            String estado = boxEstado.getSelectedItem().toString();
+            String dt_nascimento = campoNascimento.getText();
+            String est_civil = boxCivil.getSelectedItem().toString();
+            String observacao = campoObs.getText();
 
             insertCadastro r = new insertCadastro();    //Conectar com o banco.
-            
-            if(r.Cadastro(cpf, nome)) {    //Valida o campo digitado com o banco.
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
-            }
+                    
+            if(r.Cadastro(cpf, nome, sobrenome, telefone, email, rua, bairro, numero, estado, dt_nascimento, est_civil, observacao)) {    //Valida o campo digitado com o banco.
+               JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                }
             else{
-                JOptionPane.showMessageDialog(null, "Erro no Cadastro!");
-            }
-        
-        
+               JOptionPane.showMessageDialog(null, "Erro no Cadastro!");
+                }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -309,15 +328,15 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> boxCivil;
     private javax.swing.JComboBox<String> boxEstado;
     private javax.swing.JTextField campoBairro;
-    private javax.swing.JTextField campoCPF;
+    private javax.swing.JFormattedTextField campoCPF;
     private javax.swing.JTextField campoEmail;
-    private javax.swing.JTextField campoNascimento;
+    private javax.swing.JFormattedTextField campoNascimento;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JTextPane campoObs;
     private javax.swing.JTextField campoRua;
     private javax.swing.JTextField campoSobrenome;
-    private javax.swing.JTextField campoTelefone;
+    private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes;
 
 import java.sql.PreparedStatement;
@@ -10,7 +5,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author Juliano P
+ * @author Juliano Pimentel
  */
 public class verificarLogin extends Connecting.conectarDB {
             
@@ -24,12 +19,13 @@ public class verificarLogin extends Connecting.conectarDB {
                 ResultSet rs = pst.executeQuery();  
                 
                 if(rs.next())            
-                    return true;    
+                    return true;   
                 else
-                    return false;            
+                    return false;          
                 }
+            
             catch(Exception e){
-                e.printStackTrace();
+                e.printStackTrace();desconecta();
                 return false;
                 } 
         }  
